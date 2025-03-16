@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+import { useUserDataStore } from '@/stores/userData'
+
+const { userData } = useUserDataStore()
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    Hello, {{ userData?.user?.username ? userData?.user?.username : userData?.user?.email }}!<br />
   </main>
 </template>

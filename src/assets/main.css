@@ -1,35 +1,176 @@
-@import './base.css';
-
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+body {
+  margin: 0;
+  padding-top: 20px; /* 20px padding on top */
+  display: flex;
+  justify-content: center; /* Centers content horizontally */
+  background-color: #f4f4f4;
+  font-size: 18px;
+}
+.main-container {
+  width: 1300px;
+  background: white;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-a,
-.green {
+p {
+  margin-block-start: 0.3em;
+  margin-block-end: 0.3em;
+}
+
+.error {
+  color: red;
+  font-size: 1.3em;
+}
+
+.mb-small {
+  margin-bottom: 5px;
+}
+
+.mb-medium {
+  margin-bottom: 10px;
+}
+
+.mb-large {
+  margin-bottom: 20px;
+}
+
+/* Navbar Styling */
+.navbar {
+  height: 50px;
+  background-color: #cccccc;
+  display: flex;
+  border-radius: 3px;
+  align-items: center;
+  padding: 0 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .logo {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  margin-left: 20px;
+}
+
+.navbar ul li {
+  margin: 0 15px;
+}
+
+.navbar ul li a {
+  text-decoration: underline;
+  color: #888888;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.navbar ul li a:hover {
+  color: #ffffff;
+}
+
+.navbar li a.active {
   text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
+  color: #666666;
+  font-weight: bold;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+.navbar li a.active:hover {
+  color: #666666;
+  cursor: default;
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
+/* Content styling */
+.content {
+  margin-top: 20px;
+}
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+/* Page components */
+/* Vocabulary search */
+.vocabulary-search input[type='text'] {
+  width: 800px;
+  height: 40px;
+  font-size: 20px;
+  border-radius: 3px;
+  border: 1px solid #666666;
+  padding-left: 15px;
+}
+
+.p-autocomplete-list-container {
+  background-color: white;
+  border: 1px solid #666666;
+}
+
+.p-autocomplete-list-container ul li {
+  padding: 5px 0px 5px 10px;
+}
+
+.p-autocomplete-list-container ul li:hover {
+  font-weight: bold;
+  border: 1px solid black;
+}
+
+.vocabulary-result-item {
+  margin-top: 10px;
+  border-radius: 10px;
+  display: flex;
+  width: 100%;
+  height: 150px;
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
+}
+.vocabulary-result-item-word {
+  width: 150px;
+  padding: 10px;
+  text-align: center;
+  border-right: 1px solid #ccc;
+}
+.vocabulary-result-item-word .word-sound {
+  height: 30px;
+}
+.vocabulary-result-item .word-sound .p-progressspinner {
+  width: 50px;
+  height: 50px;
+}
+.vocabulary-result-item-description {
+  flex-grow: 1;
+  padding: 10px;
+  border-right: 1px solid #ccc;
+}
+.vocabulary-result-item-picture {
+  width: 150px;
+  text-align: center;
+  border-right: 1px solid #ccc;
+}
+.vocabulary-result-item-picture img {
+  width: 148px;
+  height: 148px;
+  object-fit: cover;
+}
+.vocabulary-result-item-add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  padding: 10px;
+  text-align: center;
+  font-size: 1.1em;
+}
+.vocabulary-result-item button {
+  background-color: #f4f4f4;
+  border-radius: 5px;
+  font-size: 1.1em;
+  cursor: pointer;
+}
+.play-sound-button {
+  background-color: #f4f4f4;
+  border-radius: 5px;
+  font-size: 2em;
+  cursor: pointer;
 }
