@@ -25,3 +25,12 @@ export const wordMeaningContainerSchema = z.object({
 })
 
 export const wordMeaningContainersSchema = z.array(wordMeaningContainerSchema)
+
+export const Vocabulary = z.object({
+  id: z.number(),
+  word_meaning: wordMeaningSchema,
+  created_at: z.date(),
+  last_learned_at: z.date(),
+  last_fail_count: z.number(),
+  learn_count: z.number(),
+})

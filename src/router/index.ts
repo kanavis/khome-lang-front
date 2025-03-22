@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import VocabularyView from '../views/VocabularyView.vue'
+import VocabularyView from '../views/VocabularyAddView.vue'
 import {
   afterAuthRedirect,
   authByCode,
@@ -20,8 +20,8 @@ const router = createRouter({
       meta: { requiresAuth: true },
     },
     {
-      path: '/vocabulary',
-      name: 'vocabulary',
+      path: '/vocabulary/add',
+      name: 'vocabulary_add',
       component: VocabularyView,
       meta: { requiresAuth: true },
     },

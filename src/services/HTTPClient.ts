@@ -1,4 +1,4 @@
-import { getOauthToken, prodAuthRedirect } from '@/helpers/auth'
+import { getOauthToken, failAuthRedirect } from '@/helpers/auth'
 import { setGlobalError } from '@/helpers/error'
 
 export class HTTPClient {
@@ -19,7 +19,7 @@ export class HTTPClient {
       if (!result.ok) {
         if (result.status === 401) {
           console.error('Auth failed')
-          await prodAuthRedirect()
+          await failAuthRedirect()
         }
         if (result.status === 404 && result.headers.get('X-Init-Required') === 'true') {
           return undefined
