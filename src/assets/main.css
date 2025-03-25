@@ -1,3 +1,6 @@
+:root {
+  color-scheme: light only;
+}
 body {
   margin: 0;
   padding-top: 20px; /* 20px padding on top */
@@ -11,6 +14,24 @@ body {
   background: white;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+@media (prefers-color-scheme: dark) {
+  body {
+    color: black;
+  }
+  [type='text'] {
+    color: black !important;
+    background-color: white !important;
+  }
+  [type='text']:focus {
+    border: 3px ridge #52aeeb !important;
+  }
+  .p-autocomplete-overlay {
+    color: black;
+  }
+  .p-autocomplete-list-container ul li {
+    color: black;
+  }
 }
 
 p {
@@ -147,7 +168,7 @@ p {
   margin-bottom: 15px;
 }
 .vocabulary-result-item-word {
-  width: 150px;
+  width: 250px;
   padding: 10px;
   text-align: center;
   border-right: 1px solid #ccc;

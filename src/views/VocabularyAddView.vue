@@ -21,7 +21,7 @@ if (typeof userLanguage === 'undefined') {
 }
 console.log('User language is', userLanguage)
 
-const lexiconSearchValue = ref('')
+const lexiconSearchValue = ref(decodeURIComponent(window.location.hash.substring(1)) || '')
 const lexiconSearchSuggestions = ref<string[]>([])
 const lexiconSearchLoading = ref(false)
 const lexiconSearchResults = ref<z.infer<typeof wordMeaningContainersSchema>>([])
@@ -45,6 +45,8 @@ async function lexiconSearchSuggest() {
 
 async function lexiconSearchSelected() {
   console.log('Selected', lexiconSearchValue.value)
+  const urlFragment = lexiconSearchValue.value
+  window.history.pushState(null, '', `#${encodeURIComponent(urlFragment)}`)
   lexiconSearchResults.value = []
 
   let result = await httpClient.fetchJSON(
@@ -85,6 +87,10 @@ async function addToVocabulary(wordMeaningContainer: z.infer<typeof wordMeaningC
     vocabularyAddButtonsLoading.value.set(wordMeaningContainer.meaning.id, false)
   }
 }
+
+if (lexiconSearchValue.value !== '') {
+  lexiconSearchSelected()
+}
 </script>
 
 <template>
@@ -114,7 +120,9 @@ async function addToVocabulary(wordMeaningContainer: z.infer<typeof wordMeaningC
       >
         <div class="vocabulary-result-item-word">
           <div class="mb-medium">{{ wordMeaningContainer.full_word }} -</div>
-          <div>{{ wordMeaningContainer.translations[userLanguage]?.translation }}</div>
+          <div class="mb-medium">
+            {{ wordMeaningContainer.translations[userLanguage]?.translation }}
+          </div>
           <div class="word-sound">
             <WordSound :full-word="wordMeaningContainer.full_word"></WordSound>
           </div>
